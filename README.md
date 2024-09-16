@@ -1,40 +1,47 @@
-# task
+Here’s the translation of the task into English:
 
-Есть 3 ф-ии:
+---
 
-1) getUsers() - асинхронная ф-я, итоговые выходные данные - массив объектов пользователей;
-пример объекта пользователя 
+# Task
+
+There are 3 functions:
+
+1) `getUsers()` - asynchronous function, the final output is an array of user objects. Example of a user object:
+```javascript
 {
-  id: number, 
-  gender: number, (0 - female, 1-male),
-  ..... остальные данные не важны для контекста задачи
+  id: number,
+  gender: number, (0 - female, 1 - male),
+  ... the rest of the data is irrelevant for the context of the task
 }
+```
 
-2) getPreferences(userID) - асинхронная ф-я, итоговые выходные данные - массив предпочтительных товаров данного пользователя (от 0 до 5 эл.), в массиве значения не повторяются;
-Пример:
-[id, id, id, ...], в случае 0 эл-в - [], id - численно-буквенный
+2) `getPreferences(userID)` - asynchronous function, the final output is an array of the user's preferred products (from 0 to 5 items), with no duplicate values in the array. 
+Example:
+```javascript
+[id, id, id, ...] 
+```
+If there are 0 items, the result is `[]`, and `id` is alphanumeric.
 
-3) getGenderPreferences(gender) - асинхронная ф-я, итоговые выходные данные - массив предпочтительных товаров по половому признаку (может быть от 2 до 5 эл.), в массиве значения не повторяются;
-Пример:
-[id, id, id, ...], в случае 0 эл-в - [], id - численно-буквенный
+3) `getGenderPreferences(gender)` - asynchronous function, the final output is an array of preferred products based on the user's gender (from 2 to 5 items), with no duplicate values in the array. 
+Example:
+```javascript
+[id, id, id, ...] 
+```
+If there are 0 items, the result is `[]`, and `id` is alphanumeric.
 
+(*) - The `getUsers`, `getPreferences`, and `getGenderPreferences` functions are basic, and you can assume they are already developed. For convenience, you can make them return static data with a delay. The implementation of these functions is not crucial for this test.
 
-(*) - функции getUsers, getPreferences и getGenderPreferences - базовые, считать, что они уже разработаны. Для удобства разработки задачи можно им прописать возврат какой-либо статики с задержкой. Реализация этих ф-й не принципиальна для тестового.
+---
 
+## Task:
 
-Задача:
-Написать ассинхронную ф-ю, итоговые выходные данные которой -  массив из топ-10 товаров по следующей логике:
+Write an asynchronous function whose final output is an array of the top 10 products based on the following logic:
 
-1) топ формируется исходя из наиболее частого вхождения товаров в списки предпочтения пользователей;
+1) The top products are determined by the most frequent occurrences of items in users' preference lists.
 
-2) учитываются строго 5 товаров из списка предпочтения пользователя;
+2) Exactly 5 products from each user's preference list should be considered.
 
-3) в случае если у пользователя в предпочтениях менее 5 товаров его список дополняется товароми из списка топ товаров по гендерной пренадлежности. В итоговом списке предпочтений пользователя не должно быть повторений;
+3) If a user has fewer than 5 products in their preference list, their list should be supplemented with products from the top products list based on their gender. The final preference list for the user must not contain duplicates.
 
-4) в случает нехватки товаров в предпочтениях пользователя после 3-го пункта данный пользователь не участвует в формировании выборки;
-
-
-Важно - максимально понятный код, но до примитивизма доходить не нужно :)
-
-
+4) If after step 3, the user’s preference list still contains fewer than 5 items, that user is excluded from the final selection.
 
